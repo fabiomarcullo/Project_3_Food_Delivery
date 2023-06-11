@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Canada Food Delivery</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>Canada Food Delivery</h1>
+        <p>Interactive Dashboard that allows users to search for what food they want based on Restaurant, Rating, Category and address.</p>
+      </div>
+    </div>
+
+<!-- #Adding Filters -->
+    <div class="row">
+      <div class="col-md-2">  
+          </div>
+        </div>
+      </div>
+      <div class="well">
+        <h5>Filter by Restaurant:</h5>
+        <select id="RestaurantDropdown"></select>
+      </div>
+      <div class="well">
+        <h5>Filter by Category:</h5>
+        <select id="CategoryDropdown"></select>
+      </div>
+    </div>
+       <div class="well">
+        <h5>Filter by Rating:</h5>
+        <select id="RatingDropdown"></select>
+      </div>
+    </div>
+    <div class="well">
+      <h5>Filter by Address:</h5>
+      <select id="CityDropdown"></select>
+    </div>
+
+<!-- #Making dashboard Interactive -->
+    
+
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="app.js"></script>
+  
+
+</body>
+
+</html>
