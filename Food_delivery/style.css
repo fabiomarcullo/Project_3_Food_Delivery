@@ -91,6 +91,13 @@ background-color: #2196f3;
 color: #333;
 }
 
+  #sidebar {
+    background-color: #f5f5f5; /* Change the background color as per your preference */
+    height: 100vh; /* Set the height of the sidebar to 100% of the viewport height */
+    padding: 150px; /* Adjust the padding as needed */
+  }
+
+
 /* Style for the dropdown options */
 .well select option {
 background-color: #fff;

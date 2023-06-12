@@ -1,22 +1,18 @@
-// 1. Use the D3 library to read in the JSON data
-const file = "app.json";
-const dataPromise = d3.json(file);
-console.log("Data Promise: ", dataPromise);
-
 function init() {
   // Grab a reference to the dropdown select elements
   var selector1 = d3.select("#selDatasetprovince");
   var selector2 = d3.select("#selDatasetcategory");
   var selector3 = d3.select("#selDatasetrating");
 
-  // Use the data promise to populate the dropdown menus
-  dataPromise.then((data) => {
-    var addresses = Array.from(new Set(data.map((d) => d.address)));
-    var categories = Array.from(new Set(data.map((d) => d.category)));
-    var ratings = Array.from(new Set(data.map((d) => d.rating)));
+  // Use the list of unique values from app.json to populate the select options
+  d3.json("app.json").then((data) => {
+    console.log(data);
+    var provinces = Array.from(new Set(data.map((d) => d.province))).sort();
+    var categories = Array.from(new Set(data.map((d) => d.category))).sort();
+    var ratings = Array.from(new Set(data.map((d) => d.rating))).sort();
 
-    addresses.forEach((address) => {
-      selector1.append("option").text(address).property("value", address);
+    provinces.forEach((province) => {
+      selector1.append("option").text(province).property("value", province);
     });
 
     categories.forEach((category) => {
@@ -28,11 +24,12 @@ function init() {
     });
 
     // Use the first sample from the list to build the initial plots
-    var firstSample = addresses[0];
+    var firstSample = provinces[0];
     buildCharts(firstSample);
     buildMetadata(firstSample);
   });
 }
+
 
 // Initialize the dashboard
 init();
@@ -41,4 +38,23 @@ function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
   buildMetadata(newSample);
   buildCharts(newSample);
+}
+
+// Demographics Panel
+function buildMetadata(sample) {
+  d3.json("app.json").then((data) => {
+    var resultArray = data.filter((d) => d.province === sample);
+    var PANEL = d3.select("#sample-metadata");
+    PANEL.html("");
+
+    if (resultArray.length === 0) {
+      PANEL.append("h6").text("No information available for this province");
+      return; // Exit the function if no match is found
+    }
+
+    var result = resultArray[0];
+    Object.entries(result).forEach(([key, value]) => {
+      PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
+    });
+  });
 }
