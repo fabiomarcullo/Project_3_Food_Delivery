@@ -52,17 +52,19 @@ body::before {
   }
 }
 
-/* Style for the dropdown container */
+
+
+/* Style for the dropdown container /
 .container {
 display: flex;
-justify-content: center;
-align-items: center;
+justify-content: flex-start; / Align dropdowns to the left /
+align-items: flex-start; / Align container items to the left */
 }
 
-/* Style for the dropdown well */
+/* Style for the dropdown well /
 .well {
 margin-bottom: 20px;
-text-align: center;
+text-align: left; / Align dropdown labels to the left */
 }
 
 /* Style for the dropdown label */
@@ -70,21 +72,23 @@ text-align: center;
 margin-top: 0;
 }
 
-/* Style for the dropdown select */
+/* Style for the dropdown select /
 .well select {
 display: block;
-margin: 0 auto;
+margin: 0; / Remove auto margin /
 padding: 8px;
 font-size: 15px;
 border: 0.25px solid #0c00ee;
 border-radius: 4px;
 box-sizing: border-box;
+text-align: left; / Align dropdown options to the left /
+color: #000; / Set font color to black */
 }
 
 /* Style for the active dropdown option */
 .well select option:checked {
 background-color: #2196f3;
-color: #fff;
+color: #333;
 }
 
 /* Style for the dropdown options */
@@ -93,12 +97,12 @@ background-color: #fff;
 color: #333;
 }
 
-/* Style for the container of dropdown menu */
+/* Style for the container of dropdown menu /
 .well {
 background-color: #962121;
 padding: 10px;
-width: 600px; /* Adjust the width of the box */
-max-width: 100%; /* Adjust the maximum width of the box */
+width: 600px; / Adjust the width of the box /
+max-width: 100%; / Adjust the maximum width of the box */
 margin: 0 auto;
 border-radius: 4px;
 box-sizing: border-box;
@@ -116,7 +120,7 @@ margin-bottom: 20px;
 
 .jumbotron h1 {
 font-family: 'Rubik Microbe', cursive;
-color: #ffffff; 
+color: #333; 
 font-size: 90px;
 }
 
