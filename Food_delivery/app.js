@@ -62,6 +62,41 @@ function buildMetadata(sample) {
 }
 
 
+// // filters by province, Category and rating
+// function optionChanged(newSample, newSample1, newSample2) {
+//   // Fetch new data each time a new sample is selected
+//   buildMetadata(newSample, newSample1, newSample2);
+//   buildCharts(newSample, newSample1, newSample2);
+// }
+
+// // Restaurant Panel
+
+// function buildMetadata(sample) {
+//   d3.json("app.json").then((data) => {
+//     var resultArray = data.filter(d => d.province === sample && d.category === sample1 && d.rating === sample2);
+
+//     var PANEL = d3.select("#sample-metadata", "#sample1-metadata", "#sample2-metadata");
+//     PANEL.html("");
+
+//     if (resultArray.length === 0) {
+//       PANEL.append("h6").text("No information available for this province");
+//       return; // Exit the function if no match is found
+//     }
+
+//     var result = resultArray[0];
+//     Object.entries(result).forEach(([key, value]) => {
+//       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
+//     });
+//   });
+// }
 
 
-// VISUALISATION
+
+// // VISUALISATION
+// // 1. Create the buildCharts function.
+// function buildCharts(sample) {
+//   // 1. Use d3.json to load and retrieve the samples.json file 
+//   d3.json("app.json").then((data) => {
+//     // 2. Create a variable that holds the samples array. 
+//     console.log(data);
+//     var samplesArray = data.samples;
