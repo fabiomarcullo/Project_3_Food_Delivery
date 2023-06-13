@@ -38,7 +38,6 @@ h1 {
   width: auto;
   border-collapse: collapse;
   font-size: 18px; /* Adjust the font size to change the select size */
-
 }
 
 select {
@@ -59,3 +58,30 @@ select {
   /* Add styles as needed for your charts */
 }
 
+/* Move the h1 above all other information */
+h1 {
+  grid-row: 1; /* Move h1 to the first row */
+}
+
+#filters {
+  grid-row: 2; /* Move filters to the second row */
+}
+
+#sample-metadata table {
+  grid-row: 3; /* Move restaurant table to the third row */
+}
+
+#map-container {
+  width: 80%; /* Adjust the width as needed */
+  
+}
+
+#map {
+  height: 300px; /* Set the height of the map */
+  
+}
+
+#content {
+  flex-grow: 1; /* Allow the content to grow and fill the remaining space */
+  
+}

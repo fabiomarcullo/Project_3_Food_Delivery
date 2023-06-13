@@ -8,10 +8,8 @@ function init() {
   selector2.on("change", optionChanged);
   selector3.on("change", optionChanged);
 
-
   // Use the list of unique values from app.json to populate the select options
   d3.json("app.json").then((data) => {
-    console.log(data);
     var provinces = Array.from(new Set(data.map((d) => d.province))).sort();
     var categories = Array.from(new Set(data.map((d) => d.category))).sort();
     var ratings = Array.from(new Set(data.map((d) => d.rating))).sort();
@@ -35,7 +33,6 @@ function init() {
   });
 }
 
-
 // Initialize the dashboard
 init();
 
@@ -47,7 +44,6 @@ function optionChanged() {
   // Pass the selected values to the filter function
   filterData(selectedProvince, selectedCategory, selectedRating);
 }
-
 
 function filterData(province, category, rating) {
   d3.json("app.json").then((data) => {
@@ -68,20 +64,10 @@ function filterData(province, category, rating) {
 
     // Pass the filtered data to the visualization functions
     buildMetadata(filteredData);
-    buildCharts(filteredData);
+    buildMarkers(filteredData);
   });
 }
 
-
-
-// Restaurant Panel
-// Filter by province 
-// Restaurant Panel
-// Filter by province 
-// Restaurant Panel
-// Filter by province 
-// Restaurant Panel
-// Filter by province 
 function buildMetadata(filteredData) {
   var PANEL = d3.select("#sample-metadata");
   PANEL.html("");
@@ -105,7 +91,7 @@ function buildMetadata(filteredData) {
   var tbody = table.append("tbody");
 
   // Add rows and cells to the table body
-  filteredData.forEach(function(row) {
+  filteredData.forEach(function (row) {
     var dataRow = tbody.append("tr");
 
     // Add the restaurant name to the cell
@@ -113,4 +99,62 @@ function buildMetadata(filteredData) {
   });
 }
 
+function buildMarkers(filteredData) {
+  // Clear existing markers from the map
+  markerCluster.clearLayers();
 
+  // Iterate over the filtered data and create markers for each restaurant
+  filteredData.forEach((restaurant) => {
+    var marker = L.marker([restaurant.latitude, restaurant.longitude]).bindPopup(
+      "<strong>" +
+        restaurant.restaurant_name +
+        "</strong><br />" +
+        "Category: " +
+        restaurant.category +
+        "<br />" +
+        "Rating: " +
+        restaurant.rating +
+        "/5"
+    );
+
+    markerCluster.addLayer(marker); // Add the marker to the marker cluster group
+  });
+}
+
+// Creating the map object
+var myMap = L.map("map", {
+  center: [43.6532, -79.3832], // Toronto GTA coordinates: [latitude, longitude]
+  zoom: 10, // Adjust the zoom level as needed
+});
+
+// Adding the tile layer
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(myMap);
+
+// Cluster marker
+var markerCluster = L.markerClusterGroup();
+
+// Load the data from app.json
+d3.json("app.json").then((data) => {
+  // Process the retrieved data
+  // Iterate over the data and create markers for each restaurant
+  data.forEach((restaurant) => {
+    var marker = L.marker([restaurant.latitude, restaurant.longitude]).bindPopup(
+      "<strong>" +
+        restaurant.restaurant_name +
+        "</strong><br />" +
+        "Category: " +
+        restaurant.category +
+        "<br />" +
+        "Rating: " +
+        restaurant.rating +
+        "/5"
+    );
+
+    markerCluster.addLayer(marker); // Add the marker to the marker cluster group
+  });
+
+  myMap.addLayer(markerCluster); // Add the marker cluster group to the map
+});
