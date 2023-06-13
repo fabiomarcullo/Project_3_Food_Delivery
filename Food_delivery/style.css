@@ -1,162 +1,47 @@
-background design
 body {
-  background-color: white;
-  padding: 70px;
-  margin: 70px;
-  background-color: white;
-  animation: backgroundAnimation 5s ease-in-out infinite alternate;
-}
-
-@keyframes backgroundAnimation {
-  0% {
-    background-color: rgb(117, 211, 195);
-  }
-  50% {
-    background-color: rgba(101, 42, 113, 0.451);
-  }
-  100% {
-    background-color: rgb(55, 178, 227);
-  }
-}
-
-body {
-  background-color: white;
-  padding: 60px;
+  font-family: Arial, sans-serif;
   margin: 0;
-  position: relative;
+  padding: 0;
 }
 
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: -1;
+#container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 20px; /* Increase the font size to 16 pixels */
 }
 
-body::before {
-  animation: dotsAnimation 2s linear infinite;
-  background: radial-gradient(circle, #fbf7f7 10%, transparent 10%);
-  background-size: 30px 30px;
+h1 {
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 50px; /* Increase the font size to 24 pixels */
 }
 
-@keyframes dotsAnimation {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 30px 30px;
-  }
+#filters {
+  margin-bottom: 20px;
+  font-size: 20px; /* Increase the font size to 16 pixels */
 }
 
-
-
-/* Style for the dropdown container /
-.container {
-display: flex;
-justify-content: flex-start; / Align dropdowns to the left /
-align-items: flex-start; / Align container items to the left */
+#sample-metadata table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 20px; /* Increase the font size to 16 pixels */
 }
 
-/* Style for the dropdown well /
-.well {
-margin-bottom: 20px;
-text-align: left; / Align dropdown labels to the left */
+#sample-metadata th,
+#sample-metadata td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  font-size: 20px; /* Increase the font size to 16 pixels */
 }
 
-/* Style for the dropdown label */
-.well h5 {
-margin-top: 0;
+select {
+  font-size: 20px; /* Adjust the font size to change the select size */
 }
 
-/* Style for the dropdown select /
-.well select {
-display: block;
-margin: 0; / Remove auto margin /
-padding: 8px;
-font-size: 15px;
-border: 0.25px solid #0c00ee;
-border-radius: 4px;
-box-sizing: border-box;
-text-align: left; / Align dropdown options to the left /
-color: #000; / Set font color to black */
-}
-
-/* Style for the active dropdown option */
-.well select option:checked {
-background-color: #2196f3;
-color: #333;
-}
-
-  #sidebar {
-    background-color: #f5f5f5; /* Change the background color as per your preference */
-    height: 100vh; /* Set the height of the sidebar to 100% of the viewport height */
-    padding: 150px; /* Adjust the padding as needed */
-  }
-
-
-/* Style for the dropdown options */
-.well select option {
-background-color: #fff;
-color: #333;
-}
-
-/* Style for the container of dropdown menu /
-.well {
-background-color: #962121;
-padding: 10px;
-width: 600px; / Adjust the width of the box /
-max-width: 100%; / Adjust the maximum width of the box */
-margin: 0 auto;
-border-radius: 4px;
-box-sizing: border-box;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Add space between elements */
-.row {
-margin-bottom: 20px;
-}
-
-.well {
-margin-bottom: 20px;
-}
-
-.jumbotron h1 {
-font-family: 'Rubik Microbe', cursive;
-color: #333; 
-font-size: 90px;
-}
-
-.jumbotron {
-background-color: #962121; /* box background color */
-}
-
-.jumbotron p {
-font-family: 'Righteous', cursive;
-color: #ffffff; 
-}
-
-.table {
-font-family: 'Righteous', cursive;
-font-size: 14px; 
-color: #ffffff; 
-}
-
-#CategoryDropdown,
-#RatingDropdown,
-#ProvinceDropdown {
-font-family: 'Righteous', cursive;
-font-size: 20px; 
-color: #000000; 
-}
-
-/* Style for the dropdown labels */
-.well h5 {
-font-family: 'Righteous', cursive;
-font-size: 30px; 
-color: #ffffff; 
+#charts {
+  /* Add styles as needed for your charts */
 }
