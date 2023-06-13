@@ -1,4 +1,4 @@
-/*background design*/
+background design
 body {
   background-color: white;
   padding: 70px;
@@ -146,10 +146,9 @@ font-size: 14px;
 color: #ffffff; 
 }
 
-#RestaurantDropdown,
 #CategoryDropdown,
 #RatingDropdown,
-#CityDropdown {
+#ProvinceDropdown {
 font-family: 'Righteous', cursive;
 font-size: 20px; 
 color: #000000; 

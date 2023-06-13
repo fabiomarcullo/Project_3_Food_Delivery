@@ -4,11 +4,6 @@ function init() {
   var selector2 = d3.select("#selDatasetcategory");
   var selector3 = d3.select("#selDatasetrating");
 
-  selector1.on("change", optionChanged);
-  selector2.on("change", optionChanged);
-  selector3.on("change", optionChanged);
-
-
   // Use the list of unique values from app.json to populate the select options
   d3.json("app.json").then((data) => {
     console.log(data);
@@ -39,99 +34,32 @@ function init() {
 // Initialize the dashboard
 init();
 
-function optionChanged() {
-  var selectedProvince = d3.select("#selDatasetprovince").property("value");
-  var selectedCategory = d3.select("#selDatasetcategory").property("value");
-  var selectedRating = d3.select("#selDatasetrating").property("value");
-
-  // Pass the selected values to the filter function
-  filterData(selectedProvince, selectedCategory, selectedRating);
+function optionChanged(newSample) {
+  // Fetch new data each time a new sample is selected
+  buildMetadata(newSample);
+  buildCharts(newSample);
 }
 
-<<<<<<< Updated upstream
-// Demographics Panel
+// Restaurant Panel
+// Filter by province 
 function buildMetadata(sample) {
   d3.json("app.json").then((data) => {
     var resultArray = data.filter((d) => d.province === sample);
+
     var PANEL = d3.select("#sample-metadata");
     PANEL.html("");
-=======
 
-function filterData(province, category, rating) {
-  d3.json("app.json").then((data) => {
-    var filteredData = data;
-
-    // Apply filters only if a value is selected
-    if (province) {
-      filteredData = filteredData.filter((d) => d.province === province);
+    if (resultArray.length === 0) {
+      PANEL.append("h6").text("No information available for this province");
+      return; // Exit the function if no match is found
     }
 
-    if (category) {
-      filteredData = filteredData.filter((d) => d.category === category);
-    }
-
-    if (rating) {
-      filteredData = filteredData.filter((d) => d.rating === rating);
-    }
-
-    // Pass the filtered data to the visualization functions
-    buildMetadata(filteredData);
-    buildCharts(filteredData);
-  });
-}
-
-
-
-
-// Restaurant Panel
-// Filter by province 
-// Restaurant Panel
-// Filter by province 
-function buildMetadata(filteredData) {
-  var PANEL = d3.select("#sample-metadata");
-  PANEL.html("");
-
-  if (filteredData.length === 0) {
-    PANEL.append("h6").text("No information available for this selection");
-    return; // Exit the function if no match is found
-  }
->>>>>>> Stashed changes
-
-  // Create a table element
-  var table = PANEL.append("table");
-
-  // Create the table header row
-  var thead = table.append("thead");
-  var headerRow = thead.append("tr");
-
-  // Extract the column names from the first entry in the filtered data
-  var columns = Object.keys(filteredData[0]);
-
-  // Add the column names to the table header row
-  headerRow.selectAll("th")
-    .data(columns)
-    .enter()
-    .append("th")
-    .text(function(column) { return column.toUpperCase(); });
-
-  // Create the table body
-  var tbody = table.append("tbody");
-
-  // Add rows and cells to the table body
-  filteredData.forEach(function(row) {
-    var dataRow = tbody.append("tr");
-
-    columns.forEach(function(column) {
-      dataRow.append("td").text(row[column]);
+    var result = resultArray[0];
+    Object.entries(result).forEach(([key, value]) => {
+      PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
   });
-<<<<<<< Updated upstream
 }
-=======
-}
-
-
-
 
 
 // // filters by province, Category and rating
@@ -172,4 +100,3 @@ function buildMetadata(filteredData) {
 //     // 2. Create a variable that holds the samples array. 
 //     console.log(data);
 //     var samplesArray = data.samples;
->>>>>>> Stashed changes
