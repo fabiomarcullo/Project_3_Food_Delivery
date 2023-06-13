@@ -1,61 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Canada Food Delivery</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Restaurant Map</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.Default.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
 </head>
-
 <body>
+    <div id="container">
+    <h1>Restaurant Dashboard</h1>
+    <div id="filters">
+      <label for="selDatasetprovince">Province:</label>
+      <select id="selDatasetprovince" onchange="optionChanged()">
+        <!-- Add options dynamically using JavaScript -->
+      </select>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Canada Food Delivery</h1>
-        <p>Interactive Dashboard that allows users to search for what food they want based on Restaurant, Rating, Category, and address.</p>
-      </div>
+      <label for="selDatasetcategory">Category:</label>
+      <select id="selDatasetcategory" onchange="optionChanged()">
+        <!-- Add options dynamically using JavaScript -->
+      </select>
+
+      <label for="selDatasetrating">Rating:</label>
+      <select id="selDatasetrating" onchange="optionChanged()">
+        <!-- Add options dynamically using JavaScript -->
+      </select>
     </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>Filter by Province:</h5>
-          <select id="selDatasetprovince" onchange="optionChanged(selector1.property('value'))"></select>
-          <h5>Filter by Category:</h5>
-          <select id="selDatasetcategory" onchange="optionChanged(selector2.property('value'))"></select>
-          <h5>Filter by Rating:</h5>
-          <select id="selDatasetrating" onchange="optionChanged(selector3.property('value'))"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Restaurant List:</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div id="bar"></div>
-      </div>
-      <div class="col-md-5">
-        <div id="gauge"></div>
-      </div>
+
+    <div id="sample-metadata">
+      <!-- Data will be populated dynamically using JavaScript -->
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
-      </div>
+
+    <div id="charts">
+      <!-- Charts will be populated dynamically using JavaScript -->
     </div>
+    <div id="map-container">
+      <div id="map"></div>
+    </div>
+    <div id="content">
   </div>
 
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="./app.js"></script>
-  
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="app.js"></script>
 </body>
-
-
-
-
 </html>
