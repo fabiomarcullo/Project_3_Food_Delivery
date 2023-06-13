@@ -8,26 +8,42 @@ body {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
-  font-size: 20px; /* Increase the font size to 16 pixels */
+  display: grid;
+  grid-template-columns: auto 1fr; /* Divide the container into two columns, with the first column width set to auto */
+  grid-gap: 20px; /* Add some spacing between the columns */
 }
 
 h1 {
   text-align: center;
   background-color: #f2f2f2;
   padding: 20px;
-  margin-bottom: 20px;
-  font-size: 50px; /* Increase the font size to 24 pixels */
+  font-size: 30px;
+  grid-column: 1 / span 2; /* Span across both columns */
 }
 
 #filters {
-  margin-bottom: 20px;
-  font-size: 20px; /* Increase the font size to 16 pixels */
+  margin-bottom: 30px;
+  display: flex; /* Use flexbox for the filters */
+  flex-direction: column; /* Align filters vertically */
+  align-items: flex-start; /* Align filters to the left */
+  font-size: 18px; /* Adjust the font size to change the select size */
+  width: auto;
+}
+
+#filters .filter {
+  margin-right: 10px; /* Add spacing between each filter */
 }
 
 #sample-metadata table {
-  width: 100%;
+  width: auto;
   border-collapse: collapse;
-  font-size: 20px; /* Increase the font size to 16 pixels */
+  font-size: 18px; /* Adjust the font size to change the select size */
+
+}
+
+select {
+  font-size: 16px;
+  width: auto;
 }
 
 #sample-metadata th,
@@ -35,13 +51,11 @@ h1 {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ccc;
-  font-size: 20px; /* Increase the font size to 16 pixels */
-}
-
-select {
-  font-size: 20px; /* Adjust the font size to change the select size */
+  font-size: 18px;
+  width: auto;
 }
 
 #charts {
   /* Add styles as needed for your charts */
 }
+
