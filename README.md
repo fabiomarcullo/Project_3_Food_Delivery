@@ -121,6 +121,6 @@ browser.quit()
 
 # Results
 
-[Project_3_Food_Delivery_WebSite](https://fabiomarcullo.github.io/Project_3_Food_Delivery_WebSite/)
+[Project_3_Food_Delivery_WebSite](https://fabiomarcullo.github.io/Project_3_Food_Delivery/)
 
 ![HTML screenshot image](Images/WebSite.JPG)
