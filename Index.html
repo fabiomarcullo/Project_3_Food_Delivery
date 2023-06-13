@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Map</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.Default.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+    <div id="container">
+    <h1>Restaurant Dashboard</h1>
+    <div id="filters">
+      <label for="selDatasetprovince">Province:</label>
+      <select id="selDatasetprovince" onchange="optionChanged()">
+        <!-- Add options dynamically using JavaScript -->
+      </select>
+
+      <label for="selDatasetcategory">Category:</label>
+      <select id="selDatasetcategory" onchange="optionChanged()">
+        <!-- Add options dynamically using JavaScript -->
+      </select>
+
+      <label for="selDatasetrating">Rating:</label>
+      <select id="selDatasetrating" onchange="optionChanged()">
+        <!-- Add options dynamically using JavaScript -->
+      </select>
+    </div>
+
+    <div id="sample-metadata">
+      <!-- Data will be populated dynamically using JavaScript -->
+    </div>
+
+    <div id="charts">
+      <!-- Charts will be populated dynamically using JavaScript -->
+    </div>
+    <div id="map-container">
+      <div id="map"></div>
+    </div>
+    <div id="content">
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
