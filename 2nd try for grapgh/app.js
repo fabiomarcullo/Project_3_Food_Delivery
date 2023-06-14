@@ -27,6 +27,9 @@ filtere_NU = text.filter(item => item.province === 'NU');
 
 
 
+
+
+
 //   filteredData = data.filter(item => item.province === 'ON');
 // })
 //     otu_ids = data.samples.filter(itm => itm.id == sample_no)[0].otu_ids
