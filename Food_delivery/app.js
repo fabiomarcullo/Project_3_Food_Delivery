@@ -6,7 +6,7 @@ function init() {
 
   // Use the list of unique values from app.json to populate the select options
   d3.json("app.json").then((data) => {
-    console.log(data);
+    // console.log(data);
     var provinces = Array.from(new Set(data.map((d) => d.province))).sort();
     var categories = Array.from(new Set(data.map((d) => d.category))).sort();
     var ratings = Array.from(new Set(data.map((d) => d.rating))).sort();
@@ -22,11 +22,6 @@ function init() {
     ratings.forEach((rating) => {
       selector3.append("option").text(rating).property("value", rating);
     });
-
-    // Use the first sample from the list to build the initial plots
-    var firstSample = provinces[0];
-    buildCharts(firstSample);
-    buildMetadata(firstSample);
   });
 }
 
@@ -35,68 +30,58 @@ function init() {
 init();
 
 function optionChanged(newSample) {
-  // Fetch new data each time a new sample is selected
-  buildMetadata(newSample);
-  buildCharts(newSample);
-}
+//   // Fetch new data each time a new sample is selected
+//   buildMetadata(newSample);
+//   buildCharts(newSample);
+ }
 
-// Restaurant Panel
-// Filter by province 
-function buildMetadata(sample) {
+ // Restaurant Panel 
+
+var selector1 = d3.select("#selDatasetprovince");
+var selector2 = d3.select("#selDatasetcategory");
+var selector3 = d3.select("#selDatasetrating");
+
+selector1.on('change', RebuildMetadata)
+selector2.on('change', RebuildMetadata)
+selector3.on('change', RebuildMetadata)
+
+function RebuildMetadata () {
+
+  var value1 = d3.select("#selDatasetprovince").node().value;
+  var value2 = d3.select("#selDatasetcategory").node().value;
+  var value3 = d3.select("#selDatasetrating").node().value;
+  console.log(value1, value2, value3)
+  
   d3.json("app.json").then((data) => {
-    var resultArray = data.filter((d) => d.province === sample);
+    
+
+    const resultsArray = []
+  
+    for (let i = 0; i < data.length; i++) {
+      let restaurant = data[i]
+
+      if (restaurant.category == value2 & restaurant.rating == value3 & restaurant.province == value1) {
+
+        resultsArray.push(restaurant)
+
+      }
+    }
+
+    console.log(resultsArray);
+
 
     var PANEL = d3.select("#sample-metadata");
     PANEL.html("");
 
-    if (resultArray.length === 0) {
+    if (resultsArray.length === 0) {
       PANEL.append("h6").text("No information available for this province");
       return; // Exit the function if no match is found
     }
 
-    var result = resultArray[0];
+    var result = resultsArray[0];
     Object.entries(result).forEach(([key, value]) => {
       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
   });
+
 }
-
-
-// // filters by province, Category and rating
-// function optionChanged(newSample, newSample1, newSample2) {
-//   // Fetch new data each time a new sample is selected
-//   buildMetadata(newSample, newSample1, newSample2);
-//   buildCharts(newSample, newSample1, newSample2);
-// }
-
-// // Restaurant Panel
-
-// function buildMetadata(sample) {
-//   d3.json("app.json").then((data) => {
-//     var resultArray = data.filter(d => d.province === sample && d.category === sample1 && d.rating === sample2);
-
-//     var PANEL = d3.select("#sample-metadata", "#sample1-metadata", "#sample2-metadata");
-//     PANEL.html("");
-
-//     if (resultArray.length === 0) {
-//       PANEL.append("h6").text("No information available for this province");
-//       return; // Exit the function if no match is found
-//     }
-
-//     var result = resultArray[0];
-//     Object.entries(result).forEach(([key, value]) => {
-//       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
-//     });
-//   });
-// }
-
-
-
-// // VISUALISATION
-// // 1. Create the buildCharts function.
-// function buildCharts(sample) {
-//   // 1. Use d3.json to load and retrieve the samples.json file 
-//   d3.json("app.json").then((data) => {
-//     // 2. Create a variable that holds the samples array. 
-//     console.log(data);
-//     var samplesArray = data.samples;
