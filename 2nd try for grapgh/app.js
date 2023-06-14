@@ -7,6 +7,22 @@ fetch('appjson.json')
 .then(response => response.text())
 .then(text => console.log(text))
 
+filter_ON = text.filter(item => item.province === 'ON');
+filter_QC = text.filter(item => item.province === 'QC');
+filter_BC = text.filter(item => item.province === 'BC');
+filtere_AB = text.filter(item => item.province === 'AB');
+filtere_MB = text.filter(item => item.province === 'MB');
+filtere_SK = text.filter(item => item.province === 'SK');
+filtere_NS = text.filter(item => item.province === 'NS');
+filtere_NB = text.filter(item => item.province === 'NB');
+filtere_PE = text.filter(item => item.province === 'PE');
+filtere_NL = text.filter(item => item.province === 'NL');
+filtere_NT = text.filter(item => item.province === 'NT');
+filtere_YT = text.filter(item => item.province === 'YT');
+filtere_NU = text.filter(item => item.province === 'NU');
+
+
+
 
 
 
