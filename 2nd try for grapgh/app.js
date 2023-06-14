@@ -4,10 +4,15 @@
 // console.log(filteredData);
 
 fetch('appjson.json')
-.then(response => response.json())
-.then(data => { 
-  filteredData = data.filter(item => item.province === 'ON');
-})
+.then(response => response.text())
+.then(text => console.log(text))
+
+
+
+
+
+//   filteredData = data.filter(item => item.province === 'ON');
+// })
 //     otu_ids = data.samples.filter(itm => itm.id == sample_no)[0].otu_ids
 //     otu_labels = data.samples.filter(itm => itm.id == sample_no)[0].otu_labels
 //     slicedData = sample_values.slice(0, 10).reverse();
