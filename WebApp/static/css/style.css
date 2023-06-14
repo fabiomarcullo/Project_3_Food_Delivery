@@ -1,87 +1,120 @@
 body {
+  background-color: rgb(243, 243, 243);
+}
+
+div {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
-#container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: auto 1fr; /* Divide the container into two columns, with the first column width set to auto */
-  grid-gap: 20px; /* Add some spacing between the columns */
-}
-
-h1 {
-  text-align: center;
-  background-color: #f2f2f2;
-  padding: 20px;
-  font-size: 30px;
-  grid-column: 1 / span 2; /* Span across both columns */
-}
-
-#filters {
-  margin-bottom: 30px;
-  display: flex; /* Use flexbox for the filters */
-  flex-direction: column; /* Align filters vertically */
-  align-items: flex-start; /* Align filters to the left */
-  font-size: 18px; /* Adjust the font size to change the select size */
+.top {
+  margin: auto;
   width: auto;
-}
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  }
 
-#filters .filter {
-  margin-right: 10px; /* Add spacing between each filter */
-}
+    h1 {
+      background-color: rgb(255, 255, 255);
+      border: 1px solid rgba(255, 255, 255, 0);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 5px;
+      padding: 20px;
+      font-size: 50px;
+      text-align: center;
+    }
 
-#sample-metadata table {
+.mid {
+  background-color: rgba(255, 255, 255, 0);
+  margin: auto;
+  margin-bottom: 15px;
   width: auto;
-  border-collapse: collapse;
-  font-size: 18px; /* Adjust the font size to change the select size */
+  height: 400px;
+  padding: 5px;
+  display: inline-flex;
+  justify-content: center;
 }
 
-select {
-  font-size: 16px;
+#mid-1 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  flex-grow: 1;
+  /* background-color: white; */
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  border-radius: 5px;
+  margin-right: 5px;
+  }
+  #filters {
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    font-size: 15px;
+    
+  }
+    #selDatasetprovince, 
+    #selDatasetcategory, 
+    #selDatasetrating {
+      width: 100px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 5px;
+      margin: 5px;
+    }
+
+  #sample-metadata table {
+      width: auto;
+      border-collapse: collapse;
+      font-size: 15px;
+  }
+  #sample-metadata th,
+  #sample-metadata td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    width: auto;
+  }
+
+#mid-2 {
+  flex: 1;
+  flex-grow: 1;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  /* width: 200px;
+  height: 200px; */
+}
+
+img {
+  width: 200px;
+  border-radius: 5px;
+}
+
+#mid-3 {
+  flex: 1;
+  flex-grow: 1;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  margin-left: 10px;
+  /* width: 200px;
+  height: 200px; */
+}
+
+.bot {
+  background-color: rgba(255, 255, 255, 0);
+  margin: auto;
   width: auto;
-}
-
-#sample-metadata th,
-#sample-metadata td {
   padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-  font-size: 18px;
-  width: auto;
-}
-
-#charts {
-  /* Add styles as needed for your charts */
-}
-
-/* Move the h1 above all other information */
-h1 {
-  grid-row: 1; /* Move h1 to the first row */
-}
-
-#filters {
-  grid-row: 2; /* Move filters to the second row */
-}
-
-#sample-metadata table {
-  grid-row: 3; /* Move restaurant table to the third row */
-}
-
-#map-container {
-  width: 80%; /* Adjust the width as needed */
-  
+ 
 }
 
 #map {
-  height: 300px; /* Set the height of the map */
-  
-}
-
-#content {
-  flex-grow: 1; /* Allow the content to grow and fill the remaining space */
-  
+  height: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  padding: 50px;
 }
