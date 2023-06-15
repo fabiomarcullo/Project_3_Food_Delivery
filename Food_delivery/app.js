@@ -2,11 +2,9 @@ function init() {
   // Grab a reference to the dropdown select elements
   var selector1 = d3.select("#selDatasetprovince");
   var selector2 = d3.select("#selDatasetcategory");
-  var selector3 = d3.select("#selDatasetrating");
 
   selector1.on("change", optionChanged);
   selector2.on("change", optionChanged);
-  selector3.on("change", optionChanged);
 
   // Use the list of unique values from app.json to populate the select options
   d3.json("app.json").then((data) => {
@@ -22,10 +20,6 @@ function init() {
       selector2.append("option").text(category).property("value", category);
     });
 
-    ratings.forEach((rating) => {
-      selector3.append("option").text(rating).property("value", rating);
-    });
-
     // Use the first sample from the list to build the initial plots
     var firstSample = provinces[0];
     buildCharts(firstSample);
@@ -39,13 +33,12 @@ init();
 function optionChanged() {
   var selectedProvince = d3.select("#selDatasetprovince").property("value");
   var selectedCategory = d3.select("#selDatasetcategory").property("value");
-  var selectedRating = d3.select("#selDatasetrating").property("value");
 
   // Pass the selected values to the filter function
-  filterData(selectedProvince, selectedCategory, selectedRating);
+  filterData(selectedProvince, selectedCategory);
 }
 
-function filterData(province, category, rating) {
+function filterData(province, category) {
   d3.json("app.json").then((data) => {
     var filteredData = data;
 
@@ -56,10 +49,6 @@ function filterData(province, category, rating) {
 
     if (category) {
       filteredData = filteredData.filter((d) => d.category === category);
-    }
-
-    if (rating) {
-      filteredData = filteredData.filter((d) => d.rating === rating);
     }
 
     // Pass the filtered data to the visualization functions
