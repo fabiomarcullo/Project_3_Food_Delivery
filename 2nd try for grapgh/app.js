@@ -1,16 +1,34 @@
-new Chart("myChart", {
-      type: "line",
+const canvas = document.getElementById('myChart');
+
+const data  = fetch('app.json')
+.then(response => response.text ())
+.then(text => console.log(text))
+
+
+const labels = data.map(item => item.restaurant_name);
+const ratings = data.map(item => item.rating);
+
+new Chart(canvas, {
+      type: 'line',
       data: {
-        labels: xValues,
+        labels: labels,
         datasets: [{
-          backgroundColor:"rgba(0,0,255,1.0)",
-          borderColor: "rgba(0,0,255,0.1)",
-          data: yValues
+          label: 'Restaurant Ratings',
+          data: ratings,
+          backgroundColor: 'rgba(0, 123, 255, 0.5)', // Customize the background color
+          borderColor: 'rgba(0, 123, 255, 1)', // Customize the line color
+          borderWidth: 1
         }]
       },
-      options:{...}
-    
-});
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
 
 
 
@@ -21,10 +39,6 @@ new Chart("myChart", {
 
 
 
-// fetch('appjson.json')
-// .then(response => response.json())
-// .then(data => 
-//       data.forEach(itm => {
 
 //       filter_ON = data.filter(item => item.province);
 // filter_QC = text.filter(item => item.province === 'QC');
