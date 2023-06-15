@@ -1,126 +1,102 @@
-# Project_3_Food_Delivery
+![image](https://github.com/Annbelbella/Belly_Button_Challenge/assets/124645643/fb5fa27a-c953-420f-86ac-aca8b1ccb77c)
 
-## Project 3:
-Food related; different food that Canadians eat.
+**Team Members:** Fabio Marcullo De Lima, Yamileth Cova, Annbell Nakigozi, Rahiq Osman and Joseph Arambula
 
-## GOAL?
-To build something (a webpage? an app?) that allows the user to search what they want to eat based on preference and price, etc (other filters) .
+# **R**ESTAURANTS AND **C**UISINES
 
-## WHY?
-Food prices are so expensive, and there are so many choices out there.
-If you live alone or even if you have a family, anyone would benefit from spending less time to decide what you want to eat and to get the most out of your money.
+The goal of this project was to create an interactive dashboard that allows a customer or restaurant owner to search for food to eat or capitalize on based on three major factors; Province, cuisine type and Rating. Please view the webpage here: __________________________________________________
 
-## IDEAS:
-- Leaflet chloropleth map
-- Most-ordered food per neighbourhood in the GTA
-- Highest ratings/lowest rating
-- Restaurant with good reviews/bad reviews
-- Multiple ways to filter data? I.e. two or more selection boxes?
-- Chloropleth map? Cluster markers?
+## Data Source
+The data has been web scrapped from Uber-eats website and below are the two scrapped data sets that we used,
 
-## Codes
-
+### Code :
 - [WebScraping by Cities](https://github.com/fabiomarcullo/Project_3_Food_Delivery/tree/main/Cities/)
 - [Geopy_API](https://github.com/fabiomarcullo/Project_3_Food_Delivery/tree/main/Jupyter%20Files/Geopy_API.ipynb)
-
-## Output
-
+  
+### Output:
 - [Cities with Geopy API](https://github.com/fabiomarcullo/Project_3_Food_Delivery/tree/Fabio/Resources/Restaurant_File_with_address.csv)
 - [Web Scraping by City](https://github.com/fabiomarcullo/Project_3_Food_Delivery/tree/Fabio/Resources)
 
-## Data Base
+  
+## Tools
 
-![Data_Base](SQL%20Database/QuickDBD-Food_Delivery%20Diagram.png)
+The following tools have been utilized to create the webpage:
 
-## Data Source
+### Backend:
 
-  ### WebScraping from https://www.ubereats.com/ website.
+- Jupyter Notebook
 
- ```python
+- Python
 
-# Import dependencies/libraries
-from splinter import Browser
-from bs4 import BeautifulSoup as soup
-import pandas as pd
+- PostgreSQL
 
-# Setting up the browser
-browser = Browser('chrome')
+- Flask-SQLAlchemy
 
-# Visiting the website
-base_url = "https://www.ubereats.com/ca/city/"
-location = "edmonton-ab/"
-url = base_url + location
-browser.visit(url)
+### Frontend:
 
-html = browser.html
-soup = soup(html, 'html.parser')
+- JavaScript
 
-# Restaurant name
+- Bootstrap
 
-res_name = soup.find_all('div', class_='al ii br j2 c3')
-restaurants = []
+- HTML
 
-for i in res_name:
-    restaurant = i.find('h3').text.strip()
-    restaurants.append(restaurant)
+- CSS
 
-df = pd.DataFrame(restaurants, columns=['Restaurant Name'])
-print(df)
+- Plotly
 
-# Rating information 
+- Leaflet
 
-res_Rating = soup.find_all('div', class_='br al b9 bm c3 dd j3')
+### Hosting: ____________________________________________________
 
-ratings = []
+Notably, the software used to build the webpage was Visual Studio.
 
-for i in res_Rating:
-    rating = i.find('div').text.strip()
-    ratings.append(rating)
+## Results
 
-df2 = pd.DataFrame(ratings, columns=['Rating'])
-print(df2)
+Using Javascript and HTML, we have created an interactive webpage that allows the customer to parse data around. As we can see in Fig.1 below, the user can search data by filtering based on:
 
-# Address
-res_Address = soup.find_all('div', class_='fz jb al ii')
-addresses = []
+- Province
 
-for i in res_Address:
-    if i.text:
-        spans = i.find_all('span')
-        if len(spans) > 1:
-            address = spans[1].text.strip()
-            addresses.append(address)
+- Category
 
-df3 = pd.DataFrame(addresses, columns=['Address'])
-print(df3)
+**PLEASE INSERT IMAGE OF FIG.1 LABELLED AS BELOW**-----------------------------------------------------------
 
-# Category
-res_category = soup.find_all('div', class_='al ii br j2 c3')
-categories = []
+Figure 1 – showing webpage before filtering of data
 
-for i in res_category:
-    span_text = i.find('span').text.strip()
-    category = span_text.split('•')[0].strip()
-    categories.append(category)
 
-df4 = pd.DataFrame(categories, columns=['Category'])
-print(df4)
 
-# Join the DataFrames in the desired order
-result = pd.concat([df, df2, df4, df3], axis=1)
 
-result.head()
+When a user wants to see data for restaurants in Ontario that serve Italian food for example, he/she must select these values from the dropdowns of the two filters stated above. As we can see in Fig2 below, ……..restaurants are available
 
-# Export the joined DataFrame to an Excel file
-result.to_csv('edmonton-ab.csv', index=False)
+**PLEASE INSERT IMAGE OF FIG.2 LABELLED AS BELOW**------------------------------------------------------------
 
-browser.quit()
- ```
- 
-## Deploy our app on a GitHub Pages.
+Fig 2 – Restaurants in Ontario with Italian Food
 
-# Results
 
-[Project_3_Food_Delivery_WebSite](https://fabiomarcullo.github.io/Project_3_Food_Delivery/)
+## Visualizations
 
-![HTML screenshot image](Images/WebSite.JPG)
+- Bar chart demonstrates………………
+
+**PLEASE INSERT IMAGE OF Bar Graph HERE.**........................................................
+
+- The chart represents
+
+- **PLEASE INSERT IMAGE OF Chart HERE if available**......................................................
+- 
+
+- The interactive map shows locations of the given available restaurants with detailed information for each restaurant. The map also encompasses the Zoom in or zoom out function to find restaurants in the specific provinces .
+
+
+**PLEASE INSERT IMAGE OF MAP HERE**..............................................................................
+
+
+## Conclusion
+
+Despite being visually appealing and dynamic, we encountered some drawbacks while building this webpage, we initially had the rating filter added to our webpage as we thought that this would be a very important feature to aid the customers in their search for restaurants, however this limited the results output attained thus we decided to remove this filter. 
+
+We also encountered challenges in attaining all the data we needed for example, we were not able to obtain data on prices for the food thus limiting our data scope.
+
+## References
+https://www.ubereats.com/
+
+https://www.fusioncharts.com/dev/getting-started/plain-javascript/your-first-chart-using-plain-javascript
+
