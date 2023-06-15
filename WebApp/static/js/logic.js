@@ -116,8 +116,8 @@ function buildMarkers(filteredData) {
 
 // Creating the map object
 var myMap = L.map("map", {
-  center: [43.6532, -79.3832], // Toronto GTA coordinates: [latitude, longitude]
-  zoom: 10, // Adjust the zoom level as needed
+  center: [48.30, -97.30], // Somewhere in Manitoba
+  zoom: 5, // Adjust the zoom level as needed
 });
 
 // Adding the tile layer
