@@ -121,11 +121,6 @@ div {
   transform: translate(-50%, -50%);
 } */
 
-img {
-  width: 200px;
-  border-radius: 5px;
-}
-
 #mid-3 {
   flex: 1;
   flex-grow: 1;
@@ -133,8 +128,18 @@ img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   margin-left: 10px;
-  /* width: 200px;
-  height: 200px; */
+  width: 1500px;
+
+  /*height: 200px; */
+}
+
+#bar {
+  display: grid;
+  place-items: center;
+  /* align-items: center; */
+  height: 300px;
+  /* padding-top: 20px; */
+
 }
 
 .bot {
@@ -144,8 +149,9 @@ img {
   padding: 10px;
   padding-left: 40px;
   padding-right: 40px;
- 
 }
+
+
 
 #map {
   height: 390px;

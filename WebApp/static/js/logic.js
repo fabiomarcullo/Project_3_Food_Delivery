@@ -254,5 +254,59 @@ d3.json(url).then((data) => {
   };
 
   Plotly.newPlot('donut', pie_chart, layout);
+});
+
+d3.json(url).then((data) => {
+
+  var groupedCategory = d3.group(data, d => d.category);
+  var avgRating = Array.from(groupedCategory, ([key, values]) => ({
+    key: key,
+    average: d3.mean(values, d => d.rating)
+  }));
+  
+  // console.log(groupedCategory)
+  console.log(avgRating)
+
+  var x_axis = avgRating.map(d => d.key);
+  var y_axis = avgRating.map(d => d.average);
+
+  // console.log(x_axis)
+  // console.log(y_axis)
+
+  var bar_data = [{
+    x: x_axis,
+    y: y_axis,
+    type: 'bar',
+    text: x_axis,
+    marker: {color: 'coral'}
+  }]
+
+  var layout = {
+    title: {
+      text: "<b>Average Rating of each Category/Cuisine type</b>",
+      font: {
+        family: 'Arial',
+        size: 25,
+        color: 'black'
+      },
+      x: 0.5, // Set the x position to center (0.5)
+      y: 0.9, // Set the y position to center (0.5)
+      xanchor: 'center',
+      yanchor: 'middle'
+    },
+    width:1500,
+    height: 400,
+    margin: {
+      l: 40,  // Increase the left margin to create more space for labels
+      r: 10,
+      t: 80
+    },
+    xaxis: {
+      automargin: true,  // Enable automatic margin adjustment for the x-axis labels
+      tickangle: 45
+    }
+  };
+
+  Plotly.newPlot('bar', bar_data, layout)
 
 });
