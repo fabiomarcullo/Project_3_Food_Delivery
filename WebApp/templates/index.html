@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restaurant Map</title>
+  <title>Restaurants and Cuisines</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.Default.css" />
   <link rel="stylesheet"  href="..\static\css\style.css">
+
+  <!-- Include fusioncharts core library -->
+  <!-- <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script> -->
+  <!-- Include fusion theme -->
+  <!-- <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script> -->
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
 <body>
 
   <div class = "top">
-    <h1> Restaurant Dashboard </h1>
+    <h1> Restaurants and Cuisines Dashboard </h1>
   </div>
 
   <div class = "mid">
@@ -31,27 +39,29 @@
         <option>--Category--</option>
         </select>
 
-        <select id="selDatasetrating" onchange="optionChanged()">
-        <!-- Add options dynamically using JavaScript -->
-        <option>--Rating--</option>
-        </select> 
-
       </div>
      
       <div id="sample-metadata">
-        <!-- Data will be populated dynamically using JavaScript -->
+        <table>
+          <!-- Data will be populated dynamically using JavaScript -->
+        </table>
       </div>
       
     </div>
 
     <div id="mid-2">
-      <img src = "https://wcs.smartdraw.com/chart/img/basic-bar-graph.png?bn=15100111874">
+      <div id="donut">
+        <!-- Pie chart will be placed here --> 
+      </div>
     </div>
    
     <div id="mid-3">
-      <img src = "https://wcs.smartdraw.com/chart/img/basic-bar-graph.png?bn=15100111874">
+      <div id = "bar">
+        <!-- bAR chart will be placed here -->  
+      </div>
     </div>
   
+
   </div>
 
   <div class = "bot">
@@ -61,7 +71,11 @@
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
   <script src="https://d3js.org/d3.v6.min.js"></script>
-  <script src="..\static\js\logic.js"></script>
+  
+  <!-- <script src="..\static\js\logic.js"></script> -->
+
+  <script src="{{ url_for('static', filename='js/logic.js')}}"></script>
 
 </body>
+
 </html>
