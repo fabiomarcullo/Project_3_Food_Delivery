@@ -210,3 +210,49 @@ d3.json(url).then((data) => {
 //     .catch(error => {
 //         console.error('Error loading chart data:', error);
 //     });
+
+d3.json(url).then((data) => {
+
+  var keys_categs = Array.from(new Set(data.map((d) => d.category)));
+  var values_categs = keys_categs.map(category => data.filter((d) => d.category === category).length);
+
+  // console.log(keys_categs)
+  // console.log(values_categs)
+
+  var pie_chart = [{
+    values: values_categs,
+    labels: keys_categs,
+    type: "pie",
+    automargin: true,
+    hole: 0.6,
+    textposition: 'inside'
+  }];
+
+  var layout = {
+    height: 325,
+    width: 325,
+    margin: {"t": 0, "b": 0, "l": 0, "r": 0},
+    showlegend: false,
+    autosize: false,
+    title: {
+      text: '<b>Category/<br>Cuisine type<br>across<br>Canada</b>',
+      font: {
+        family: 'Arial',
+        size: 25,
+        color: 'black'
+      },
+      x: 0.5, // Set the x position to center (0.5)
+      y: 0.61, // Set the y position to center (0.5)
+      xanchor: 'center',
+      yanchor: 'middle'
+    }
+    // titlefont: {
+    //   size: 18, 
+    //   color: '#333'
+    // }
+
+  };
+
+  Plotly.newPlot('donut', pie_chart, layout);
+
+});
