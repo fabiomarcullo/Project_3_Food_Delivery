@@ -2,7 +2,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, inspect
-
+import json
 import requests
 from flask import Flask, jsonify, render_template
 
@@ -34,6 +34,12 @@ app = Flask(__name__)
 @app.route("/")
 def index ():
     return render_template("index.html")
+
+@app.route('/data')
+def data(): 
+    f = open('app.json')
+    output_data = json.load(f)
+    return jsonify(output_data)
 
 # Define a route for retrieving the restaurant data as JSON
 @app.route('/restaurants')

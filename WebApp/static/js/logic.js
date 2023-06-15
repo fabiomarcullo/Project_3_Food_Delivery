@@ -1,15 +1,13 @@
-url = "/restaurants"
+const url = "/data"
 
 function init() {
   // Grab a reference to the dropdown select elements
   var selector1 = d3.select("#selDatasetprovince");
   var selector2 = d3.select("#selDatasetcategory");
-  var selector3 = d3.select("#selDatasetrating");
 
   selector1.on("change", optionChanged);
   selector2.on("change", optionChanged);
-  selector3.on("change", optionChanged);
-
+  
   // Use the list of unique values from app.json to populate the select options
   d3.json(url).then((data) => {
     var provinces = Array.from(new Set(data.map((d) => d.province))).sort();
@@ -24,14 +22,11 @@ function init() {
       selector2.append("option").text(category).property("value", category);
     });
 
-    ratings.forEach((rating) => {
-      selector3.append("option").text(rating).property("value", rating);
-    });
-
     // Use the first sample from the list to build the initial plots
     var firstSample = provinces[0];
-    buildCharts(firstSample);
-    buildMetadata(firstSample);
+    //console.log(firstSample)
+    //buildCharts(firstSample);
+    buildMetadata(data);
   });
 }
 
@@ -41,16 +36,16 @@ init();
 function optionChanged() {
   var selectedProvince = d3.select("#selDatasetprovince").property("value");
   var selectedCategory = d3.select("#selDatasetcategory").property("value");
-  var selectedRating = d3.select("#selDatasetrating").property("value");
 
   // Pass the selected values to the filter function
-  filterData(selectedProvince, selectedCategory, selectedRating);
+  filterData(selectedProvince, selectedCategory);
 }
 
-function filterData(province, category, rating) {
+function filterData(province, category) {
   d3.json(url).then((data) => {
     var filteredData = data;
-
+    console.log(typeof data)
+    
     // Apply filters only if a value is selected
     if (province) {
       filteredData = filteredData.filter((d) => d.province === province);
@@ -58,10 +53,6 @@ function filterData(province, category, rating) {
 
     if (category) {
       filteredData = filteredData.filter((d) => d.category === category);
-    }
-
-    if (rating) {
-      filteredData = filteredData.filter((d) => d.rating === rating);
     }
 
     // Pass the filtered data to the visualization functions
@@ -160,3 +151,62 @@ d3.json(url).then((data) => {
 
   myMap.addLayer(markerCluster); // Add the marker cluster group to the map
 });
+
+// fetch(url)
+//     .then(response => response.json())
+//     .then(jsonData => {
+//         // Calculate average rate by cuisine
+//         const cuisineRatings = {};
+//         jsonData.forEach(item => {
+//             const cuisine = item.label;
+//             const rating = parseFloat(item.value);
+//             if (!isNaN(rating)) {
+//                 if (!cuisineRatings[cuisine]) {
+//                     cuisineRatings[cuisine] = {
+//                         totalRating: 0,
+//                         count: 0
+//                     };
+//                 }
+//                 cuisineRatings[cuisine].totalRating += rating;
+//                 cuisineRatings[cuisine].count++;
+//             }
+//         });
+// ​
+//         const chartData = Object.keys(cuisineRatings).map(cuisine => {
+//             const averageRating = cuisineRatings[cuisine].totalRating / cuisineRatings[cuisine].count;
+//             return {
+//                 "label": cuisine,
+//                 "value": averageRating.toFixed(2),
+//             };
+//         });
+// ​
+//         //STEP 3 - Chart Configurations
+//         const chartConfig = {
+//             type: 'column2d',
+//             renderAt: 'chart-container',
+//             width: '100%',
+//             height: '400',
+//             dataFormat: 'json',
+//             dataSource: {
+//                 // Chart Configuration
+//                 "chart": {
+//                     "caption": "Average Ratings by Cuisine",
+//                     "subCaption": "Based on User Reviews",
+//                     "xAxisName": "Cuisine",
+//                     "yAxisName": "Average Rating",
+//                     "numberSuffix": "",
+//                     "theme": "fusion",
+//                 },
+//                 // Chart Data
+//                 "data": chartData
+//             }
+//         };
+// ​
+//         FusionCharts.ready(function(){
+//             var fusioncharts = new FusionCharts(chartConfig);
+//             fusioncharts.render();
+//         });
+//     })
+//     .catch(error => {
+//         console.error('Error loading chart data:', error);
+//     });

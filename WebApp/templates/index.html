@@ -8,6 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.Default.css" />
   <link rel="stylesheet"  href="..\static\css\style.css">
+
+  <!-- Include fusioncharts core library -->
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+  <!-- Include fusion theme -->
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+
 </head>
 <body>
 
@@ -31,11 +37,6 @@
         <option>--Category--</option>
         </select>
 
-        <select id="selDatasetrating" onchange="optionChanged()">
-        <!-- Add options dynamically using JavaScript -->
-        <option>--Rating--</option>
-        </select> 
-
       </div>
      
       <div id="sample-metadata">
@@ -45,13 +46,15 @@
     </div>
 
     <div id="mid-2">
-      <img src = "https://wcs.smartdraw.com/chart/img/basic-bar-graph.png?bn=15100111874">
+      <a href="http://127.0.0.1:5501/templates/index2.html"><img src = "https://wcs.smartdraw.com/chart/img/basic-bar-graph.png?bn=15100111874"></a>
     </div>
    
     <div id="mid-3">
       <img src = "https://wcs.smartdraw.com/chart/img/basic-bar-graph.png?bn=15100111874">
     </div>
   
+    
+
   </div>
 
   <div class = "bot">
@@ -61,7 +64,9 @@
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
   <script src="https://d3js.org/d3.v6.min.js"></script>
-  <script src="..\static\js\logic.js"></script>
+  <!-- <script src="..\static\js\logic.js"></script> -->
+  <!-- <div id="chart-container">FusionCharts XT will load here!</div> -->
+  <script src="{{ url_for('static', filename='js/logic.js')}}"></script>
 
 </body>
 </html>
