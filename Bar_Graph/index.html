@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar Graph </title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <h1>Bar Graph Provinces and Qty</h1>
+
+  <canvas id="myChart"></canvas>
+
+  <script>
+    // Fetch the JSON data
+    fetch('restaurant.json')
+      .then(response => response.json())
+      .then(data => {
+        // Process the JSON data
+        const labels = data.map(item => item.label);
+        const values = data.map(item => item.value);
+
+        // Create the bar graph using Chart.js
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Data',
+              data: values,
+              backgroundColor: 'rgba(0, 123, 255, 0.5)'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      })
+// .catch(error => console.error('Error loading JSON data:', error));
+  </script>
+</body>
+</html>
